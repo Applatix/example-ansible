@@ -8,7 +8,7 @@ container:
     mem_mib: 256
     cpu_cores: 0.1
     disk_gb: 0
-  image: "docker.local/ansible/centos7-ansible:latest"
+  image: "ansible/centos7-ansible:latest"
   docker_options: ""
   command: "%%CMD%%"
 inputs:
@@ -36,7 +36,7 @@ inputs:
       default: "%%session.repo%%"
 steps:
 - checkout:
-    template: axcheckout
+    template: axscm-checkout
 - "ansible-test1":
     template: ansible-example-base
     parameters:
