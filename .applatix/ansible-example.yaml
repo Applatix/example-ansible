@@ -13,11 +13,11 @@ container:
   command: "%%CMD%%"
 inputs:
   artifacts:
-  - from: "%%step.checkout_step.code%%"
+  - from: "%%code%%"
     path: "/src"
   parameters:
     CMD:
-    checkout_step:
+    code:
 outputs:
   artifacts:
     code:
@@ -41,9 +41,9 @@ steps:
     template: ansible-example-base
     parameters:
       CMD: "sh -c 'cd /src/tests && ansible-playbook --connection=local --limit=localhost --inventory-file=hosts all.yml'"
-      checkout_step: "%%step.checkout.id%%"
+      code: "%%steps.checkout.code%%"
   "ansible-test2":
     template: ansible-example-base
     parameters:
       CMD: "sh -c 'cd /src/tests && ansible-playbook --connection=local --limit=localhost --inventory-file=hosts all.yml'"
-      checkout_step: "%%step.checkout.id%%"
+      code: "%%steps.checkout.code%%"
